@@ -1,4 +1,3 @@
-
 package org.launchcode.techjobs.oo;
 
 import mockit.Expectations;
@@ -12,7 +11,6 @@ import java.lang.reflect.Method;
 
 import static java.lang.System.lineSeparator;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
@@ -38,9 +36,11 @@ public class TestTaskFive extends AbstractTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Job job = createJob("Web Developer", "LaunchCode", "StL", "Back-end developer", "Java");
-        String jobString = job.toString();
-        assertTrue(jobString.startsWith(lineSeparator()));
-        assertTrue(jobString.endsWith(lineSeparator()));
+        String firstChar = String.valueOf(job.toString().charAt(0));
+        String lastChar = String.valueOf(job.toString().charAt(job.toString().length()-1));
+
+        assertEquals(firstChar, "\r");
+        assertEquals(lastChar, "\n");
     }
 
     @Test
@@ -58,7 +58,7 @@ public class TestTaskFive extends AbstractTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         Job job = createJob("Web Developer", "LaunchCode", "StL", "Back-end developer", "Java");
-        String jobString = job.toString();
+        String jobString = getJobString(job);
         assertEquals(jobString, job.toString());
     }
 
@@ -77,7 +77,7 @@ public class TestTaskFive extends AbstractTest {
     @Test
     public void testToStringHandlesEmptyField() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         Job job = createJob("Web Developer", "", "StL", "", "Java");
-        String jobString = job.toString();
+        String jobString = getJobString(job);
         assertEquals(jobString, job.toString());
     }
 

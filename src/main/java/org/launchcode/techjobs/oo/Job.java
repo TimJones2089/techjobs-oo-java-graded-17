@@ -1,4 +1,3 @@
-
 package org.launchcode.techjobs.oo;
 
 import org.w3c.dom.ls.LSOutput;
