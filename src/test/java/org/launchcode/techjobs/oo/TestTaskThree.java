@@ -257,7 +257,6 @@ public class TestTaskThree extends AbstractTest {
         } catch (NoSuchMethodException e) {
             fail("Job does not declare an hashCode method");
         }
-
         assertEquals(job.hashCode(), job.hashCode());
         assertNotEquals(job.hashCode(), anotherJob.hashCode());
 
