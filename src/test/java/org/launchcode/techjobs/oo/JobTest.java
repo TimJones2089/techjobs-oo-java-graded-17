@@ -54,11 +54,10 @@ public class JobTest {
                 new Location("Desert"), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
 
-        String firstChar = String.valueOf(testJob1.toString().charAt(0));
-        String lastChar = String.valueOf(testJob1.toString().charAt(testJob1.toString().length()-1));
+        String jobString = testJob1.toString();
 
-        assertEquals(firstChar, "\r");
-        assertEquals(lastChar, "\n");
+        assertTrue(jobString.startsWith(lineSeparator()));
+        assertTrue(jobString.endsWith(lineSeparator()));
 
 
     }
